@@ -1,0 +1,170 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.body{
+    background-color: bisque;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.navbar{
+    background-color: rgb(122, 8, 8);
+    color: white;
+}
+
+.titulo{
+    display: flex;
+    justify-content: center;
+    padding-top: 10px;
+    margin: 10px;
+    font-size: 40px;
+}
+
+.parrafo{
+    margin: 10px;
+    padding: 10px;
+    font-size: 20px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    text-align: center;
+}
+
+.carrito{
+    width: 40px;
+}
+
+.div{
+    display: flex;
+    justify-content: space-around;
+    margin: 20px;
+}
+
+.genero{
+    background-color: rgb(122, 8, 8);
+    color: white;
+    margin-top: 10px;
+    padding: 8px 12px;
+    border: 0;
+    border-radius: 5px;
+}
+
+.genero:hover{
+    background-color: #F2A20C;
+    color: black;
+}
+
+.caja{
+    margin-top: 10px;
+    padding: 8px 12px;
+    border: 1;
+    border-radius: 5px;
+}
+
+.btnBuscar{
+    background-color: rgb(122, 8, 8);
+    color: white;
+    margin-top: 10px;
+    padding: 8px 12px;
+    border: 0;
+    border-radius: 5px;
+}
+
+.btnBuscar:hover{
+    background-color: #F2A20C;
+    color: black;
+}
+
+.ver{
+    background-color: rgb(122, 8, 8);
+    color: white;
+    margin-top: 10px;
+    padding: 8px 12px;
+    border: 0;
+    border-radius: 5px;
+}
+
+.ver:hover{
+    background-color: #F2A20C;
+    color: black;
+}
+
+.ocultar{
+    background-color: rgb(122, 8, 8);
+    color: white;
+    margin-top: 10px;
+    padding: 8px 12px;
+    border: 0;
+    border-radius: 5px;
+}
+
+.ocultar:hover{
+    background-color: #F2A20C;
+    color: black;
+}
+
+.tarjetas{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.tarjeta{
+    width: 250px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px;
+    padding: 20px;
+    border: 1px solid black;
+    border-radius: 10px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    box-shadow: 0px 1px 10px rgba(0,0,0,0.2);
+    cursor: default;
+    transition: all 400ms ease;
+}
+
+.tarjeta:hover{
+    box-shadow: 5px 5px 20px rgba(0,0,0,0.4);
+    transform: translateY(-3%);
+    background-color: rgb(122, 8, 8);
+    color: white;
+}
+
+.imgJuego{
+    width: 100%;
+    height: 210px;
+    border-radius: 10px;
+}
+
+.tarjeta__titulo{
+    margin: 10px;
+    text-align: center;
+}
+
+.tarjeta__genero{
+    margin: 10px;
+}
+
+.tarjeta__precio{
+    margin: 10px;
+}
+
+.btns{
+    background-color: rgb(122, 8, 8);
+    color: white;
+    margin-top: 10px;
+    padding: 8px 12px;
+    border: 1;
+    border-radius: 5px;
+}
+
+.btns:hover{
+    background-color: #F2A20C;
+    color: black;
+}
+
+.borrar{
+    width: 25px;
+}
+
