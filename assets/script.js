@@ -41,8 +41,9 @@ const juego11 = new Juegos(11, "Aventuras", "Assassins Creed Valhalla", 2700,"AC
 
 const juego12 = new Juegos(12, "Aventuras", "Sekiro: Shadows Die Twice", 2500,"sekiro.jpg")
 
+//Storage carrito
+let productosEnCarrito = JSON.parse(localStorage.getItem("carrito")) || []
 
-let productosEnCarrito = []
 const catalogo= []
 catalogo.push(juego1, juego2, juego3, juego4, juego5, juego6, juego7, juego8, juego9, juego10, juego11, juego12)
 
@@ -74,6 +75,7 @@ function mostrarCatalogo(array){
 function agregarAlCarrito(Juegos){
     productosEnCarrito.push(Juegos)
     console.log(productosEnCarrito)
+    localStorage.setItem("carrito", JSON.stringify( productosEnCarrito))
 }
 
 let btnMostrarCatalogo = document.getElementById("verCatalogo")
@@ -88,7 +90,6 @@ function ocultarCatalogo(){
 let btnOcultarCatalogo = document.getElementById("ocultarCatalogo")
 btnOcultarCatalogo.onclick = ocultarCatalogo
 
-//Storge
 let juego1JSON = JSON.stringify(juego1)
 
 localStorage.setItem("objetoJuego", juego1)
@@ -135,10 +136,6 @@ function compraTotal(array){
     acumulador = array.reduce((acumulador, productoCarrito)=>{
         return acumulador + productoCarrito.precio
     },0)
-    if(acumulador == 0){
-        parrafoCompra.innerHTML = `<strong>No hay productos en el carrtio</strong>`
-    }
-    else{
-        parrafoCompra.innerHTML = `El total de su carrito es: ${acumulador}`
-    }
+    acumulador == 0 ? parrafoCompra.innerHTML = `<strong>No hay productos en el carrtio</strong>` : parrafoCompra.innerHTML = `El total de su carrito es: ${acumulador}`
+
 }
