@@ -1,3 +1,4 @@
+
 class Juegos {
     constructor(id, genero, titulo, precio, imagen){
 
@@ -76,6 +77,14 @@ function agregarAlCarrito(Juegos){
     productosEnCarrito.push(Juegos)
     console.log(productosEnCarrito)
     localStorage.setItem("carrito", JSON.stringify( productosEnCarrito))
+    //Alert con Sweeat Alert
+    Swal.fire({
+        title: "Ha agregado un producto",
+        icon: "success",
+        confirmButtonText: "Acepto",
+        confirmButtonColor: "rgb(122, 8, 8)",
+        timer: 3000,
+        })
 }
 
 let btnMostrarCatalogo = document.getElementById("verCatalogo")
@@ -139,3 +148,4 @@ function compraTotal(array){
     acumulador == 0 ? parrafoCompra.innerHTML = `<strong>No hay productos en el carrtio</strong>` : parrafoCompra.innerHTML = `El total de su carrito es: ${acumulador}`
 
 }
+
