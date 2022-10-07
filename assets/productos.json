@@ -1,0 +1,86 @@
+[
+    {
+        "id": 1,
+        "titulo": "Resident Evil 3 Nemesis",
+        "genero": "Survival Horror",
+        "precio": 2900,
+        "imagen": "re3.jpg"
+    },
+    {
+        "id": 2,
+        "titulo": "Dead Space",
+        "genero": "Survival Horror",
+        "precio": 1500,
+        "imagen": "DS.jpg"
+    },
+    {
+        "id": 3,
+        "titulo": "Silent Hill",
+        "genero": "Survival Horror",
+        "precio": 2800,
+        "imagen": "SH.jpg"
+    },
+    {
+        "id": 4,
+        "titulo": "Marvel vs Capcom",
+        "genero": "Lucha",
+        "precio": 1400,
+        "imagen": "MvsC.jpg"
+    },
+    {
+        "id": 5,
+        "titulo": "Street Fighter",
+        "genero": "Lucha",
+        "precio": 1500,
+        "imagen": "SF.jpg"
+    },
+    {
+        "id": 6,
+        "titulo": "Super Smash Bros: Ultimate",
+        "genero": "Lucha",
+        "precio": 2000,
+        "imagen": "SSBU.jpg"
+    },
+    {
+        "id": 7,
+        "titulo": "Rocket League",
+        "genero": "Deportes",
+        "precio": 1000,
+        "imagen": "RL.jpg"
+    },
+    {
+        "id": 8,
+        "titulo": "Fifa 22",
+        "genero": "Deportes",
+        "precio": 900,
+        "imagen": "Fifa22.jpg"
+    },
+    {
+        "id": 9,
+        "titulo": "NBA2K22",
+        "genero": "Deportes",
+        "precio": 800,
+        "imagen": "NBA.jpg"
+    },
+    {
+        "id": 10,
+        "titulo": "God of War",
+        "genero": "Aventuras",
+        "precio": 2100,
+        "imagen": "GOW.jpg"
+    },
+    {
+        "id": 11,
+        "titulo": "Assassins Creed Valhalla",
+        "genero": "Aventuras",
+        "precio": 2700,
+        "imagen": "ACV.jpg"
+    },
+    {
+        "id": 12,
+        "titulo": "Sekiro: Shadows Die Twice",
+        "genero": "Aventuras",
+        "precio": 2500,
+        "imagen": "sekiro.jpg"
+    }
+]
