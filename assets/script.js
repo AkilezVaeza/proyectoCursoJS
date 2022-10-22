@@ -1,5 +1,4 @@
 
-// Storage carrito
 let productosEnCarrito = JSON.parse(localStorage.getItem("carrito")) || []
 
 let divProductos = document.getElementById("productos")
@@ -10,7 +9,7 @@ function mostrarCatalogo(array){
         <div id=${Juegos.id} class="tarjeta">
             <img class="imgJuego" src="./assets/img/${Juegos.imagen}" alt="${Juegos.titulo}">
             <h5 class="tarjeta__titulo">${Juegos.genero}</h5>
-            <p class="tarjeta__genero">Genero:${Juegos.titulo}</p>
+            <p class="tarjeta__genero">Genero: ${Juegos.titulo}</p>
             <p class="tarjeta__precio">Precio:${Juegos.precio}</p>
             <button id="agregarBtn${Juegos.id}" class="btns btnComprar">Agregar al Carrito</button>
         </div>
@@ -18,26 +17,34 @@ function mostrarCatalogo(array){
     divProductos.appendChild(nuevoProducto)
 
         let btnAgregar = document.getElementById(`agregarBtn${Juegos.id}`)
-        console.log(btnAgregar)
         btnAgregar.addEventListener("click", ()=>{
-            console.log(Juegos)
             agregarAlCarrito(Juegos)
         })
     })
 }
 
 function agregarAlCarrito(Juegos){
-    productosEnCarrito.push(Juegos)
-    console.log(productosEnCarrito)
-    localStorage.setItem("carrito", JSON.stringify( productosEnCarrito))
-    //Alert con Sweeat Alert
-    Swal.fire({
-        title: "Ha agregado un producto",
-        icon: "success",
-        confirmButtonText: "Acepto",
-        confirmButtonColor: "rgb(122, 8, 8)",
-        timer: 3000,
+    let juegoAgregado = productosEnCarrito.find((elem)=>(elem.id == Juegos.id))
+    if(juegoAgregado == undefined){
+        productosEnCarrito.push(Juegos)
+        localStorage.setItem("carrito", JSON.stringify( productosEnCarrito))
+        Swal.fire({
+            title: "Ha agregado un producto",
+            icon: "success",
+            confirmButtonText: "Acepto",
+            confirmButtonColor: "rgb(122, 8, 8)",
+            timer: 3000,
+            })
+    }else{
+        Swal.fire({
+            title: "Producto ya agregado",
+            text: `El juego ${Juegos.genero} ya se encuentra en el carrito.`,
+            icon: "info",
+            timer: 4500,
+            confirmButtonText: "Aceptar",
+            confirmButtonColor: `grey`,
         })
+    }
 }
 
 let btnMostrarCatalogo = document.getElementById("verCatalogo")
@@ -52,7 +59,6 @@ function ocultarCatalogo(){
 let btnOcultarCatalogo = document.getElementById("ocultarCatalogo")
 btnOcultarCatalogo.onclick = ocultarCatalogo
 
-//DOM CARRITO
 let botonCarrito = document.getElementById("botonCarrito")
 let modalBody = document.getElementById("modal-body")
 let botonFinalizarCompra = document.getElementById("botonFinalizarCompra")
@@ -70,15 +76,25 @@ function cargarProductosCarrito(array){
         <div class="card border-primary mb-3" id ="productoCarrito${productoCarrito.id}" style="max-width: 540px;">
             <img class="card-img-top" src="./assets/img/${productoCarrito.imagen}" alt="${productoCarrito.titulo}">
             <div class="card-body">
-                    <h4 class="card-title">${productoCarrito.titulo}</h4>
+                    <h4 class="card-title">${productoCarrito.genero}</h4>
                 
                     <p class="card-text">$${productoCarrito.precio}</p> 
-                    <button class= "btn" id="botonEliminar"><i class="fas fa-trash-alt"><img class="borrar" src="./assets/img/borrar.jpg" alt=""></i></button>
+                    <button class= "btn" id="botonEliminar${productoCarrito.id}"><i class="fas fa-trash-alt"><img class="borrar" src="./assets/img/borrar.jpg" alt=""></i></button>
             </div>    
         </div>`
 
     })
-    // Calcular el total
+    array.forEach((productoCarrito, indice)=>{
+        document.getElementById(`botonEliminar${productoCarrito.id}`).addEventListener("click",()=>{
+            array.splice(indice, 1)
+            localStorage.setItem("carrito", JSON.stringify(array))
+
+
+            
+            let cardProducto = document.getElementById(`productoCarrito${productoCarrito.id}`)
+            cardProducto.remove()
+        })
+    })
     compraTotal(array)
 }
 
@@ -88,11 +104,10 @@ function compraTotal(array){
     acumulador = array.reduce((acumulador, productoCarrito)=>{
         return acumulador + productoCarrito.precio
     },0)
-    acumulador == 0 ? parrafoCompra.innerHTML = `<strong>No hay productos en el carrtio</strong>` : parrafoCompra.innerHTML = `El total de su carrito es: ${acumulador}`
+    acumulador == 0 ? parrafoCompra.innerHTML = `<strong><center>No hay productos en el carrtio</center></strong>` : parrafoCompra.innerHTML = `<center><strong>El total de su carrito es: ${acumulador}</center></strong>`
 
 }
 
-//Finalizar compra carrito
 botonFinalizarCompra.addEventListener("click", ()=>{finalizarCompra()})
 function finalizarCompra(){
     Swal.fire({
@@ -124,3 +139,26 @@ function finalizarCompra(){
         }
     })
 }
+
+
+let btnBuscar = document.getElementById("btnBuscar")
+let buscador = document.getElementById("buscador")
+
+btnBuscar.addEventListener("click", ()=>{
+    event.preventDefault()
+    let buscado = catalogo.filter(juego => juego.titulo.toLowerCase().includes(buscador.value.toLowerCase()) || juego.genero.toLowerCase().includes(buscador.value.toLocaleLowerCase()))
+    console.log(buscado)
+    if(buscado.length == 0 ){
+        Swal.fire({
+            title: 'No hay coincidencias',
+            icon: 'error',
+            text: 'No contamos con ese juego en el catalogo',
+            confirmButtonColor: 'grey',
+            timer: 4000
+        })
+    }else{
+        divProductos.innerHTML = ""
+        mostrarCatalogo(buscado)
+    }
+})
+

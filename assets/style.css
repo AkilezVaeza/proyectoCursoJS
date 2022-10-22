@@ -12,6 +12,9 @@
 .navbar{
     background-color: rgb(122, 8, 8);
     color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .titulo{
@@ -144,6 +147,7 @@
 
 .tarjeta__genero{
     margin: 10px;
+    text-align: center;
 }
 
 .tarjeta__precio{
